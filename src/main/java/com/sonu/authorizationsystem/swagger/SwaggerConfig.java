@@ -16,9 +16,10 @@ import java.util.ArrayList;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    public static final Contact DEFAULT_CONTACT = new Contact("sonu", "www.google.com", "abc@gmail.com");
+    public static final Contact DEFAULT_CONTACT = new Contact("sonu", "www.sonusangwan.com", "sonusangwan.asiwas@gmail.com");
     public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Authorization System App", "Build a permission based authorization system for API access control", "1.0", "urn:tos",
             DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0", new ArrayList<VendorExtension>());
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

@@ -33,6 +33,7 @@ public class UserController {
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
     public String adminAccess() {
+        log.info("Admin access");
         return "Admin Board.";
     }
 }

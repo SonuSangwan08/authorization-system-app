@@ -11,6 +11,7 @@ import com.sonu.authorizationsystem.model.response.MessageResponse;
 import com.sonu.authorizationsystem.repository.RoleRepository;
 import com.sonu.authorizationsystem.repository.UserRepository;
 import com.sonu.authorizationsystem.service.UserDetailsImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,21 +34,22 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@Slf4j
 public class AuthenticationController {
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
-    JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LogInRequest loginRequest) {
@@ -83,7 +85,7 @@ public class AuthenticationController {
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
-
+        log.info("Registering a new user");
         // Create new user's account
         User user = new User(registrationRequest.getUserName(),
                 registrationRequest.getEmail(),
