@@ -1,6 +1,9 @@
 package com.sonu.authorizationsystem.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -13,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(	name = "users",
+@Table(name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
@@ -24,15 +27,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     private String userName;
-    @NotBlank
-    @Email
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Not Valid Email Address")
     private String email;
-    @NotBlank
+    @NotBlank(message = "Password is mandatory")
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @ToString.Exclude

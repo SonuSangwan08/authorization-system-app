@@ -1,4 +1,4 @@
-package com.sonu.authorizationsystem.service;
+package com.sonu.authorizationsystem.service.impl;
 
 import com.sonu.authorizationsystem.entity.User;
 import com.sonu.authorizationsystem.repository.UserRepository;

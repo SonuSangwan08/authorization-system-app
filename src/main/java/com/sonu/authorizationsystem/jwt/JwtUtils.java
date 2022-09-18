@@ -1,7 +1,7 @@
 package com.sonu.authorizationsystem.jwt;
 
 
-import com.sonu.authorizationsystem.service.UserDetailsImpl;
+import com.sonu.authorizationsystem.service.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,10 +14,10 @@ import java.util.Date;
 @Slf4j
 public class JwtUtils {
 
-    @Value("${sonu.app.jwtSecret}")
+    @Value("${authorization-system.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${sonu.app.jwtExpirationMs}")
+    @Value("${authorization-system.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {

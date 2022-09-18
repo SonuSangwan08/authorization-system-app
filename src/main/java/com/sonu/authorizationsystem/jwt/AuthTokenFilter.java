@@ -1,6 +1,6 @@
 package com.sonu.authorizationsystem.jwt;
 
-import com.sonu.authorizationsystem.service.UserDetailsServiceImpl;
+import com.sonu.authorizationsystem.service.impl.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -52,7 +52,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
             return headerAuth.substring(7);
         }
-        log.error("JWT token not found in request header");
         return null;
     }
 }

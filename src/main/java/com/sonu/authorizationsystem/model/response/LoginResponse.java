@@ -1,12 +1,15 @@
 package com.sonu.authorizationsystem.model.response;
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
 @AllArgsConstructor
-public class JwtResponse {
+@ApiModel
+public class LoginResponse {
     private String token;
     private static String type = "Bearer";
     private Long id;

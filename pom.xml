@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.sonu</groupId>
 	<artifactId>authorization-system</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>authorization-system</name>
 	<description>Build a permission based authorization system for API access control</description>
 	<properties>
@@ -20,6 +20,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,6 +42,11 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-bean-validators</artifactId>
+			<version>2.7.0</version> <!-- or any version you like -->
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -69,7 +78,8 @@
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>2.0.2</version>
 		</dependency>
-	</dependencies>
+
+    </dependencies>
 
 	<build>
 		<plugins>

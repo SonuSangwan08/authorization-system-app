@@ -2,7 +2,7 @@ package com.sonu.authorizationsystem.security;
 
 import com.sonu.authorizationsystem.jwt.AuthEntryPointJwt;
 import com.sonu.authorizationsystem.jwt.AuthTokenFilter;
-import com.sonu.authorizationsystem.service.UserDetailsServiceImpl;
+import com.sonu.authorizationsystem.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,12 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableGlobalMethodSecurity(
-        // securedEnabled = true,
-        // jsr250Enabled = true,
         prePostEnabled = true)
 public class WebSecurityConfig {
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
@@ -58,13 +56,14 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**", "/v2/api-docs",
+                .authorizeRequests().antMatchers("/auth/**").permitAll()
+                .antMatchers("/content-board/**", "/v2/api-docs",
                         "/configuration/ui",
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
-                        "/webjars/**").permitAll()
+                        "/webjars/**",
+                        "/book/**").permitAll()
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -2,6 +2,8 @@ package com.sonu.authorizationsystem.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 @Configuration
 @EnableSwagger2
+@Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
     public static final Contact DEFAULT_CONTACT = new Contact("sonu", "www.sonusangwan.com", "sonusangwan.asiwas@gmail.com");
     public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Authorization System App", "Build a permission based authorization system for API access control", "1.0", "urn:tos",
